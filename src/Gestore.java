@@ -14,21 +14,20 @@ public class Gestore {
         File file = this.fileMio;
         File fileappoggio = new File("src/Cortinovis");
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(this.fileMio));PrintWriter writer=new PrintWriter(new FileWriter(fileappoggio)))
-        {
-            Boolean primaLinea=true;
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.fileMio)); PrintWriter writer = new PrintWriter(new FileWriter(fileappoggio))) {
+            Boolean primaLinea = true;
             String next;
-            while ((next= reader.readLine())!=null){
-                if(primaLinea) {
+            while ((next = reader.readLine()) != null) {
+                if (primaLinea) {
                     writer.println(next + "; mioparametro; cancellazionelogica");
                     primaLinea = false;
-                }else {
-                    writer.println(next +"; " + (new Random().nextInt(11)+10)+ ";" + true);
+                } else {
+                    writer.println(next + "; " + (new Random().nextInt(11) + 10) + ";" + true);
                 }
                 writer.flush();
                 writer.close();
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
         if (!file.delete()) {
@@ -39,24 +38,24 @@ public class Gestore {
         }
     }
 
-    public int contaCampi() throws RuntimeException{
-        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileMio))){
-            String [] recordControllo=reader.readLine().split(";");
+    public int contaCampi() throws RuntimeException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.fileMio))) {
+            String[] recordControllo = reader.readLine().split(";");
             return recordControllo.length;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public int maxRecord() throws RuntimeException{
-        try (BufferedReader reader=new BufferedReader(new FileReader(this.fileMio))){
+    public int maxRecord() throws RuntimeException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.fileMio))) {
             reader.readLine(); //Elimino l'intestazione dal conteggio
 
-            int max=0;
+            int max = 0;
             String next;
-            while ((next = reader.readLine()) != null){
-                if (next.length()>max)
-                    max=next.length();
+            while ((next = reader.readLine()) != null) {
+                if (next.length() > max)
+                    max = next.length();
             }
             return max;
         } catch (IOException e) {
@@ -64,5 +63,14 @@ public class Gestore {
         }
     }
 
+    public void aggiungiRecord(Record record) throws RuntimeException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.fileMio)); PrintWriter writer = new PrintWriter(new FileWriter(this.fileMio, true))) {
+            writer.println(record.toString());
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 

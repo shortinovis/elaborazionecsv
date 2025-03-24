@@ -21,5 +21,8 @@ public class Record {
     public String getTotale() {return Totale;}
     public void setTotale(String totale) {Totale = totale;}
 
-
+    @Override
+    public String toString() {
+        return "Record{" + "index=" + index + ", Nazionalità='" + Nazionalità + '\'' + ", Maschi='" + Maschi + '\'' + ", Femmine='" + Femmine + '\'' + ", Totale='" + Totale + '\'' + '}';
+    }
 }
