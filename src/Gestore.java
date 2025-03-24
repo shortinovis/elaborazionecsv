@@ -63,7 +63,7 @@ public class Gestore {
         }
     }
 
-    public void aggiungiRecord(Record record) throws RuntimeException {
+    public void aggiungiREcord(Record record) throws RuntimeException {
         try (BufferedReader reader = new BufferedReader(new FileReader(this.fileMio)); PrintWriter writer = new PrintWriter(new FileWriter(this.fileMio, true))) {
             writer.println(record.toString());
             writer.flush();
