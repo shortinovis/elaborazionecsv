@@ -72,7 +72,7 @@ public class Gestore {
             throw new RuntimeException(e);
         }
     }
-    public void Spaziatura(Record record) throws RuntimeException {
+    public void Spaziatura() throws RuntimeException {
         try (PrintWriter writer = new PrintWriter(new FileWriter("appoggio")); BufferedReader reader = new BufferedReader(new FileReader(this.fileMio))) {
             int max=maxRecord();
             int app=0;
