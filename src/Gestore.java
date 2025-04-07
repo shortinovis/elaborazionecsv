@@ -64,7 +64,7 @@ public class Gestore {
     }
 
     public void aggiungiREcord(Record record) throws RuntimeException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(this.fileMio)); PrintWriter writer = new PrintWriter(new FileWriter(this.fileMio, true))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(this.fileMio, true))) {
             writer.println(record.toString());
             writer.flush();
             writer.close();
@@ -72,5 +72,24 @@ public class Gestore {
             throw new RuntimeException(e);
         }
     }
+    public void Spaziatura(Record record) throws RuntimeException {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("appoggio")); BufferedReader reader = new BufferedReader(new FileReader(this.fileMio))) {
+            int max=maxRecord();
+            int app=0;
+
+            String next;
+            while ((next = reader.readLine()) != null) {
+                writer.print(next);
+                if (next.length() < max)
+                    app=max-next.length();
+                    for(int i=0;i<app; i++){
+                        writer.print(" ");
+                    }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
 
