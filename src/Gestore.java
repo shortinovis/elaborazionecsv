@@ -72,6 +72,15 @@ public class Gestore {
             throw new RuntimeException(e);
         }
     }
+    public void aggiungiREcord2(Record record) throws RuntimeException {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(this.fileMio, true))) {
+            writer.println(record.toString()+ "; " + (new Random().nextInt(11) + 10) + ";" + true);
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public void Spaziatura() throws RuntimeException {
         try (PrintWriter writer = new PrintWriter(new FileWriter("appoggio")); BufferedReader reader = new BufferedReader(new FileReader(this.fileMio))) {
             int max=maxRecord();

@@ -9,6 +9,11 @@ public class Main {
         int opzione;
         File miofile=new File("elaborazione csv/src/Cortinovis.csv");
         Gestore gestore=new Gestore(miofile);
+        boolean usata=false;
+        String nazionalita;
+        int maschi;
+        int femmine;
+        int totale;
 
         do {
             System.out.println("scegli  opzione:");
@@ -27,6 +32,7 @@ public class Main {
             switch (opzione) {
                 case 1:
                 gestore.addCampo();
+                usata=true;
 
                     break;
                 case 2:
@@ -43,8 +49,17 @@ public class Main {
 
                     break;
                 case 5:
-
-                gestore.aggiungiREcord();
+                System.out.println("dammi dati del record");
+                nazionalita=t.nextLine();
+                maschi=t.nextInt();
+                femmine=t.nextInt();
+                totale=t.nextInt();
+                Record record=new Record(nazionalita,String.valueOf(maschi),String.valueOf(femmine),String.valueOf(totale));
+                if(usata) {
+                    gestore.aggiungiREcord2(record);
+                }else {
+                    gestore.aggiungiREcord(record);
+                }
 
                     break;
                 case 6:

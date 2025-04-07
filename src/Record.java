@@ -2,16 +2,14 @@ public class Record {
     private int index;
     private String Nazionalità, Maschi, Femmine, Totale;
 
-    public Record(int index, String nazionalità, String maschi, String femmine, String totale) {
-        this.index = index;
-        Nazionalità = nazionalità;
-        Maschi = maschi;
-        Femmine = femmine;
-        Totale = totale;
+    public Record(String nazionalità, String maschi, String femmine, String totale) {
+        this.Nazionalità = nazionalità;
+        this.Maschi = maschi;
+        this.Femmine = femmine;
+        this.Totale = totale;
     }
 
-    public int getIndex() {return index;}
-    public void setIndex(int index) {this.index = index;}
+
     public String getNazionalità() {return Nazionalità;}
     public void setNazionalità(String nazionalità) {Nazionalità = nazionalità;}
     public String getMaschi() {return Maschi;}
@@ -23,6 +21,6 @@ public class Record {
 
     @Override
     public String toString() {
-        return "Record{" + "index=" + index + ", Nazionalità='" + Nazionalità + '\'' + ", Maschi='" + Maschi + '\'' + ", Femmine='" + Femmine + '\'' + ", Totale='" + Totale + '\'' + '}';
+        return Nazionalità + "; " + Maschi + "; " + Femmine +"; " + Totale;
     }
 }
