@@ -26,6 +26,7 @@ public class Main {
             System.out.println("7-Ricerca record");
             System.out.println("8-Modifica record");
             System.out.println("9-Cancellazione record");
+            System.out.println("10-dati su html");
             System.out.println("0-esci");
             opzione = t.nextInt();
             t.nextLine();
@@ -77,6 +78,10 @@ public class Main {
 
 
                     break;
+                case 10:
+                gestore.datiInHtml();
+
+                    break;
                 case 0:
 
 
@@ -87,6 +92,5 @@ public class Main {
 
             }
         } while (opzione != 0);
-    }
     }
 }
